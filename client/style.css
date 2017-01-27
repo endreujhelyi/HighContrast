@@ -11,9 +11,11 @@ html {
 }
 
 body {
-  width: 100%;
+  width: 1280px;
   height: 100vh;
-  background-color: #ddd4bc;
+  font-family: Roboto, sans-serif;
+  background: linear-gradient(to bottom, rgba(52,247,221,1) 0%, rgba(39,115,230,1) 100%);
+  overflow: hidden;
 }
 
 
@@ -44,8 +46,14 @@ header {
 
 .container {
   width: 100%;
+<<<<<<< HEAD
   height: 100% - 30px;
   border-top: 2px solid rgba(248,220,11,1);
+=======
+  height: calc(100% - 70px);
+  border-top: 2px dotted #3d3c3a;
+  display: flex;
+>>>>>>> 2c51fd00ff5995b9fe6c05540562b2d1a70ee121
 }
 
 
@@ -56,6 +64,8 @@ header {
   width: 50%;
   height: 100%;
   padding: 2rem;
+  padding-right: 0;
+  padding-bottom: 0;
   position: relative;
 }
 
@@ -65,31 +75,180 @@ header {
 }
 
 .players-container h1 {
-  height: 1.7rem;
+  height: 60px;
   width: 500px;
-  font-family: Roboto, sans-serif;
   font-size: 2rem;
   font-weight: bold;
   padding: 0;
-  color: #ddd4bc;
+  color: #fff;
   text-align: right;
-  background-color: #000;
+  background-color: #3d3c3a;
+
   position: absolute;
-  top: 10px;
+  top: -5px;
   left: -250px;
+  border-radius: 5px;
 }
 
 .player-list {
   height: calc(100% - 40px);
   width: 100%;
   margin-top: 40px;
+  border-right: 5px solid #3d3c3a;
+  overflow-x: hidden;
 }
 
 .player-list li {
-  color: #ddd4bc;
-  font-size: 2.6rem;
-  background-color: #000;
+  height: 2.6rem;
+  color: #2e2e2e;
+  padding-left: 10px;
+  font-weight: bold;
+  background-color: #fff;
   margin-bottom: .4rem;
+  border-top: 2px solid #3d3c3a;
+  border-radius: 5px 0 0 5px;
+
   display: flex;
   flex-direction: row;
+  align-items: center;
+  transition: all .4s ease;
+  transform: translateX(68%);
+}
+
+.player-list li:hover {
+  transform: translateX(0);
+}
+
+#active {
+  transform: translateX(0);
+}
+
+.player-list img {
+  max-width: 33px;
+  max-height: 100%;
+  margin-right: 1rem;
+}
+
+.player-info-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-list h2 {
+  width: 190px;
+  font-size: 2rem;
+}
+
+.player-points {
+  width: 100%;
+  padding: 0 20px;
+  border-left: 2px solid #dedede;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.player-list p {
+  font-size: 2rem;
+  color: #2773e6;
+}
+
+.player-list span {
+  font-size: 2rem;
+  color: #f53a3a;
+}
+
+
+
+/* GAME SECTION */
+
+.game-container {
+  width: 50%;
+  padding: 0 2rem 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-header {
+  width: 100%;
+  height: 72px;
+  overflow: hidden;
+}
+
+  /* mission */
+.game-header h1 {
+  height: 80px;
+  width: 200px;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0;
+  margin-left: 220px;
+  color: #fff;
+  text-align: center;
+  background-color: #3d3c3a;
+
+  border-radius: 5px;
+  transition: all .4s ease;
+  transform: translateY(40px);
+  box-sizing: content-box;
+}
+
+.game-container h1:hover {
+  transform: translateY(10px);
+}
+
+.game-box {
+  width: 100%;
+  height: 100%;
+}
+
+.mission_note {
+  max-width: 100%;
+  background-color: #fff;
+  padding: .3rem;
+  border-top: 2px solid #3d3c3a;
+  border-radius: 0 5px 5px 0;
+
+  transition: all .4s ease;
+  transform: translateX(-90%);
+}
+
+.mission_note h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2e2e2e;
+  text-align: right;
+  margin-bottom: 2rem;
+}
+
+.mission_note:hover {
+  transform: translateX(0);
+}
+
+.response-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+.response-box button {
+  height: 2.4rem;
+  width: 30%;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.mission_success {
+  background: #4fce2c;
+}
+
+.mission_fail {
+  background: #ce2c2c;
+}
+
+.mission_reject {
+  background: #363636;
 }
