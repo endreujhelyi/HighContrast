@@ -68,7 +68,7 @@ var postData = function () {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       listRenderer(xhr.response.result);
-      missionUpdateder(xhr.response.tasls);
+      missionUpdater(xhr.response.tasls);
     };
   };
 };

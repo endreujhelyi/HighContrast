@@ -3,6 +3,9 @@
 
 var playerList = document.querySelector('.player-list');
 var missionNote = document.querySelector('.mission_note');
+var responseBox = document.querySelector('.response-box');
+
+var currentPlayerID = playerInfo.currentPlayerID;
 
 
 // call this with res.result
@@ -36,4 +39,28 @@ function listRenderer(playerInfo) {
 function missionUpdateder(task) {
   missionNote.classList.add('mission_active');
   missionNote.querySelector('h2').textContent = task.desc;
+
+  var buttonTag = document.createElement('button');
+  var buttonTag2 = document.createElement('button');
+  var buttonTag3 = document.createElement('button');
+
+  responseBox.appendChild(buttonTag).classList.add('mission_success', 'shadow');
+  responseBox.appendChild(buttonTag2).classList.add('mission_fail', 'shadow');
+  responseBox.appendChild(buttonTag3).classList.add('missio_reject', 'shadow');
+
+  var ajaxButtons = response-box.querySelectorAll('button');
+
+  var responseString = ['done', 'failed', 'pass'];
+
+  ajaxButtons.forEach(function(button, index) {
+    button.addEventListener('click', function() {
+      postStatus(responseString[index - 1], task.taskID, currentPlayerID);
+    })
+  })
+}
+
+
+function taskRandomizer(tasks) {
+  var task = tasks[Math.floor(Math.random() * tasks.length)];
+  missionUpdater(task);
 }
