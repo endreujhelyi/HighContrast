@@ -88,9 +88,14 @@ button:active {
 
 .active-container {
   width: 100%;
+<<<<<<< HEAD
+  height: 100% - 30px;
+  border-top: 2px solid rgba(248,220,11,1);
+=======
   height: calc(100% - 70px);
   border-top: 2px dotted #3d3c3a;
   display: flex;
+>>>>>>> 2c51fd00ff5995b9fe6c05540562b2d1a70ee121
 }
 
 
