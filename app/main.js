@@ -5,9 +5,8 @@ var playerList = document.querySelector('.player-list');
 var missionNote = document.querySelector('.mission_note');
 
 
+// call this with res.result
 function listRenderer(playerInfo) {
-
-  missionNote.classList.add('mission_active');
 
   playerInfo.result.forEach(function(drinker) {
     var liTag = document.createElement('li');
@@ -30,4 +29,11 @@ function listRenderer(playerInfo) {
       liTag.setAttribute('id', 'active');
     }
   })
+}
+
+
+// call this with res.tasks
+function missionUpdateder(task) {
+  missionNote.classList.add('mission_active');
+  missionNote.querySelector('h2').textContent = task.desc;
 }

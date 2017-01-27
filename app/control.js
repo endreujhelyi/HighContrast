@@ -58,15 +58,27 @@ var inputHandler = (function (){
 
 var xhr = new XMLHttpRequest();
 var url = 'https://alike-libra.gomix.me';
-var requestStart = 0;
+
 var postData = function () {
   xhr.open('POST', url + '/start');
   xhr.setRequestHeader('Content-Type','application/json');
-  console.log(inputHandler.post);
   xhr.send(JSON.stringify(toPost));
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       listRenderer(xhr.response.result);
+      taskRandomizer(xhr.response.tasls);
+    };
+  };
+};
+
+var postStatus = function (responseString,taskIDint,currentPlayerID) {
+  xhr.open('POST', url + '/action');
+  xhr.setRequestHeader('Content-Type','application/json');
+  xhr.send(JSON.stringify({status: responseString,taskID: taskIDint,currentPlayerID: currentPlayerID}))
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      listRenderer(xhr.response.result);
+      missionUpdater(xhr.response.tasks);
     };
   };
 };
@@ -104,7 +116,7 @@ var postData = function () {
         currentAlcoholType = 'Pezsgő';
       }else if (currentAlcoholDegree === 17) {
         currentAlcoholType = 'Likőr';
-      }else if (currentAlcoholDegree === 21 ) {
+      }else if (currentAlcoholDegree === 21 ) { // DREDD JUDGE BUILDING
         currentAlcoholType = 'Fehér rum';
       }else if (currentAlcoholDegree === 35 ) {
         currentAlcoholType = 'Unicum';
@@ -144,6 +156,8 @@ var postData = function () {
     postData();
     return toPost;
     });
+
+
 
   return {
     addPlayer: plusPlayer,
