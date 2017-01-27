@@ -1,0 +1,73 @@
+input, .alcohol_selector {
+  height: 30px;
+  width: 160px;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  font-size: 1rem;
+}
+.alcohol_selector {
+  width: 200px;
+  background-color: inherit;
+}
+
+.registration {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 999;
+  font-size: 1.2rem;
+}
+
+.players, .alcohol_stock {
+  height: 100%;
+  width: 50vw;
+  background-color: inherit;
+  padding: 2.5rem;
+  overflow-x: scroll;
+  align-content: center;
+}
+
+.players *, .alcohol_stock * {
+  margin: 20px 0;
+  display: block;
+}
+
+.players button, .alcohol_stock button {
+  width: 50%;
+  padding: 15px;
+  background-color: #668B8B;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+}
+
+.alcohol_stock button {
+  width: 300px;
+}
+
+.alcohol_stock {
+  height: 100%;
+  width: 50vw;
+  background-color: inherit;
+  left: 50vw;
+  padding: 2.5rem;
+}
+
+.alcohol_inputs {
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
