@@ -67,7 +67,8 @@ var postData = function () {
   console.log(JSON.stringify(toPost));
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
-      console.log(xhr.response);
+      listRenderer(xhr.response.result);
+      missionUpdateder(xhr.response.tasls);
     };
   };
 };
@@ -105,7 +106,7 @@ var postData = function () {
         currentAlcoholType = 'Pezsgő';
       }else if (currentAlcoholDegree === 17) {
         currentAlcoholType = 'Likőr';
-      }else if (currentAlcoholDegree === 21 ) {
+      }else if (currentAlcoholDegree === 21 ) { // DREDD JUDGE BUILDING
         currentAlcoholType = 'Fehér rum';
       }else if (currentAlcoholDegree === 35 ) {
         currentAlcoholType = 'Unicum';
