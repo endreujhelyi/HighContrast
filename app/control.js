@@ -25,7 +25,6 @@ var inputHandler = (function (){
       newInput.querySelector('.delete_player').addEventListener('click', function () {
         container.removeChild(newInput);
       });
-      console.log(newInput);
       container.appendChild(newInput);
     } else {
       alert('You have reached the max. players.')
@@ -46,7 +45,6 @@ var inputHandler = (function (){
 
   var plusAlcohol = function () {
     var newInputs = selectorToAdd.cloneNode(true);
-    console.log(newInputs.querySelector('input'));
     newInputs.querySelector('input').value = '';
     newInputs.querySelector('.delete').addEventListener('click', function () {
       alcoholContainer.removeChild(newInputs);
@@ -58,7 +56,21 @@ var inputHandler = (function (){
 
   addAlcohol.addEventListener('click', plusAlcohol);
 
-// INPUTREADERS
+var xhr = new XMLHttpRequest();
+var url = 'https://alike-libra.gomix.me';
+var requestStart = 0;
+var postData = function () {
+  xhr.open('POST', url + '/start');
+  xhr.setRequestHeader('Content-Type','application/json');
+  console.log(inputHandler.post);
+  xhr.send(JSON.stringify(toPost));
+  console.log(JSON.stringify(toPost));
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      console.log(xhr.response);
+    };
+  };
+};
 
 // reader of the player-inputs!!!!!!!!!!!!!!!!!!!!!
   var toPost = [];
@@ -70,16 +82,15 @@ var inputHandler = (function (){
       if (actual.length) {
         players.push(actual);
       };
-      console.log(players);
     };
     theRegistrationFields.classList.add('hidden');
     var alcoholList = document.querySelectorAll('.alcohol_inputs');
     var currentAlcoholType = '';
     var currentAlcoholDegree = 0;
     var currentAlcoholCapacity = 0;
-    var alcohol = {};
-    var alcohols = [];
+    var liquids = [];
     for (var i=0; i< alcoholList.length; i++) {
+      var alcohol = {};
       currentAlcoholDegree = parseInt(alcoholList[i].querySelector('.alcohol_selector').value);
       currentAlcoholCapacity = parseInt(alcoholList[i].querySelector('.liter_num').value);
       if (currentAlcoholDegree === 4) {
@@ -109,7 +120,7 @@ var inputHandler = (function (){
       }else if (currentAlcoholDegree === 47.3 ) {
         currentAlcoholType = 'Gin';
       }else if (currentAlcoholDegree === 60 ) {
-        currentAlcoholType = 'Matróy rum';
+        currentAlcoholType = 'Matróz rum';
       }else if (currentAlcoholDegree === 60.1 ) {
         currentAlcoholType = 'Gyengébb Pálinka';
       }else if (currentAlcoholDegree === 60.2 ) {
@@ -120,14 +131,18 @@ var inputHandler = (function (){
         currentAlcoholType = 'Spicc Rum';
       }else if (currentAlcoholDegree === 82 ) {
         currentAlcoholType = 'Abszint';
-      };
+      } else if (currentAlcoholDegree === 0) {
+        currentAlcoholType = '';
+      }
       alcohol.name = currentAlcoholType;
       alcohol.degree = currentAlcoholDegree;
       alcohol.capacity = currentAlcoholCapacity;
-      alcohols.push(alcohol);
+      if (currentAlcoholType.length) {
+        liquids.push(alcohol);
+      }
     }
-    toPost = {players,alcohols};
-    console.log(toPost);
+    toPost = {players,liquids};
+    postData();
     return toPost;
     });
 
@@ -137,24 +152,3 @@ var inputHandler = (function (){
     post: toPost,
   };
 }());
-
-var ajax = (function () {
-  var xhr = new XMLHttpRequest();
-  var url = 'https://alike-libra.gomix.me';
-
-  var postData = function (data) {
-    xhr.open('POST', url + '/start');
-    xhr.setRequestHeader('Content-Type','application/json');
-    console.log(inputHandler.post);
-    xhr.send(JSON.stringify(data));
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        console.log(xhr.response);
-      };
-    };
-  };
-  return {
-    post: postData,
-  };
-}());
-ajax.post(inputHandler.post);
