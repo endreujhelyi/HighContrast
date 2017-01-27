@@ -56,7 +56,6 @@ var inputHandler = (function (){
 
   addAlcohol.addEventListener('click', plusAlcohol);
 
-// INPUTREADERS
 var xhr = new XMLHttpRequest();
 var url = 'https://alike-libra.gomix.me';
 var requestStart = 0;
