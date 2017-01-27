@@ -18,23 +18,28 @@
   justify-content: center;
   top: 0;
   border-radius: 5px;
+  position: relative;
 }
+
+
+
+
+/* PLAYERS SECTION */
 
 .players {
   width: 50%;
-  min-width: 500px;
+  min-width: 450px;
   height: 100%;
+  overflow: scroll;
 }
 
-.players > button {
+.players > button,
+.alcohol_stock > button {
   width: auto;
   margin-bottom: 25px;
   padding: 0 10px;
   color: #fff;
-}
-
-.players > button:hover {
-  transform: scaleX(1.);
+  transition: all .4s ease;
 }
 
 #add_player {
@@ -63,6 +68,61 @@ input {
 
 input:focus {
   outline: 2px solid #fbaa27;
+}
+
+.handle_player .delete_player {
+  background: #ce2c2c;
+}
+
+
+
+
+/* ALCOHOL STOCK */
+
+.alcohol_stock {
+  width: 50%;
+  min-width: 450px;
+  height: 90%;
+  overflow: scroll;
+}
+
+#add_alcohol_type {
+  background: #4fce2c;
+}
+
+#add_alcohol_type:hover {
+  background: #ce9e2c;
+}
+
+.alcohol_inputs {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #dedede;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.alcohol_inputs > select {
+  width: auto;
+  font-size: 2rem;
+}
+
+.alcohol_spec > input {
+  width: 120px;
+}
+
+.alcohol_spec .delete {
+  background: #ce2c2c;
+}
+
+.submit {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  bottom: -60px;
+  background: #bb4cdb;
+  border-radius: 50%;
 }
 
 

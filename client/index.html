@@ -18,17 +18,17 @@
 
         <div class="handle_player">
           <input class="playerInput" type="text" name="player_name" value="" placeholder="NAME">
-          <button class="delete_player shadow" type="button" name="button">Delete</button>
+          <button class="delete_player shadow" type="button" name="button">Del</button>
         </div>
       </div>
 
 
       <div class="alcohol_stock">
-        <button id="add_alcohol_type" type="button" name="button">New Drink</button>
+        <button id="add_alcohol_type" class="shadow" type="button" name="button">New Drink</button>
 
         <div class="alcohol_inputs">
           <select class="alcohol_selector" name="">
-            <option value="">Válassz egy alkohol típust</option>
+            <option value="">Choose Drink</option>
             <option value="4">Sör 4%</option>
             <option value="7">Fröccs 7%</option>
             <option value="9">Erős sör 9%</option>
@@ -49,14 +49,16 @@
             <option value="81">Spicc Rum 80%</option>
             <option value="82">Abszint 80%</option>
           </select>
-          <input class="liter_num" type="number" name="" value="" placeholder="Hány liter?" />
-          <button class="delete" type="button" name="button">Del</button>
+          <div class="alcohol_spec">
+            <input class="liter_num" type="number" name="" value="" placeholder="Liter" />
+            <button class="delete shadow" type="button" name="button">Del</button>
+          </div>
         </div>
 
       </div>
 
+      <button class="submit shadow" type="button" name="button">Submit</button>
     </div>
-    <button class="submit" type="button" name="button">Submit</button>
   </div>
 
   <!-- arnold reg end -->
