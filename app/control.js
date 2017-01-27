@@ -64,10 +64,9 @@ var postData = function () {
   xhr.setRequestHeader('Content-Type','application/json');
   console.log(inputHandler.post);
   xhr.send(JSON.stringify(toPost));
-  console.log(JSON.stringify(toPost));
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
-      console.log(xhr.response);
+      listRenderer(xhr.response.result);
     };
   };
 };
