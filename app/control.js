@@ -1,7 +1,7 @@
-var manipulateInputs = (function (){
+var inputHandler = (function (){
 
-  var theRegistrationFields = document.querySelector('.registration');
-  // theRegistrationFields.classList.add('hidden');
+  var theRegistrationFields = document.querySelector('.reg-cover');
+  theRegistrationFields.classList.add('hidden');
   var addPlayer = document.querySelector('#add_player');
   var inputsToAdd = document.querySelector('.handle_player');
   var container = document.querySelector('.players');
@@ -14,27 +14,24 @@ var manipulateInputs = (function (){
 
   var submitButton = document.querySelector('.submit');
 
-  // submitButton.addEventListener('click', function () {
-  //   theRegistrationFields.classList.add('hidden');
-  // });
-
   inputsToAdd.querySelector('.delete_player').addEventListener('click', function () {
     container.removeChild(inputsToAdd);
   });
 
   var plusPlayer = function () {
-    console.log(addPlayer);
-    if (document.querySelectorAll('.handle_player').length <= 10){
+    if (document.querySelectorAll('.handle_player').length < 10){
       var newInput = inputsToAdd.cloneNode(true);
-      newInput.value = '';
+      newInput.querySelector('input').value = '';
       newInput.querySelector('.delete_player').addEventListener('click', function () {
         container.removeChild(newInput);
       });
+      console.log(newInput);
       container.appendChild(newInput);
     } else {
       alert('You have reached the max. players.')
     }
   }
+
   addPlayer.addEventListener('click', plusPlayer);
 
   // ADDING alcohol Types
@@ -49,6 +46,7 @@ var manipulateInputs = (function (){
 
   var plusAlcohol = function () {
     var newInputs = selectorToAdd.cloneNode(true);
+    console.log(newInputs.querySelector('input'));
     newInputs.querySelector('input').value = '';
     newInputs.querySelector('.delete').addEventListener('click', function () {
       alcoholContainer.removeChild(newInputs);
@@ -60,94 +58,103 @@ var manipulateInputs = (function (){
 
   addAlcohol.addEventListener('click', plusAlcohol);
 
+// INPUTREADERS
 
-var alcoholList = function () {
-  var result = [];
-  result.push(document.querySelectorAll(''))
-}
-// delete unnecceserry lines with button
-
+// reader of the player-inputs!!!!!!!!!!!!!!!!!!!!!
+  var toPost = [];
+  submitButton.addEventListener('click', function () {
+    var playersList = document.querySelectorAll('.playerInput');
+    var players = [];
+    for (var i= 0; i < playersList.length; i++) {
+      var actual = playersList[i].value;
+      if (actual.length) {
+        players.push(actual);
+      };
+      console.log(players);
+    };
+    theRegistrationFields.classList.add('hidden');
+    var alcoholList = document.querySelectorAll('.alcohol_inputs');
+    var currentAlcoholType = '';
+    var currentAlcoholDegree = 0;
+    var currentAlcoholCapacity = 0;
+    var alcohol = {};
+    var alcohols = [];
+    for (var i=0; i< alcoholList.length; i++) {
+      currentAlcoholDegree = parseInt(alcoholList[i].querySelector('.alcohol_selector').value);
+      currentAlcoholCapacity = parseInt(alcoholList[i].querySelector('.liter_num').value);
+      if (currentAlcoholDegree === 4) {
+        currentAlcoholType = 'Sör';
+      } else if (currentAlcoholDegree === 7) {
+        currentAlcoholType = 'Fröccs';
+      } else if (currentAlcoholDegree === 9 ) {
+        currentAlcoholType = 'Erős sör';
+      }else if (currentAlcoholDegree === 13) {
+        currentAlcoholType = 'Bor';
+      }else if (currentAlcoholDegree === 13.1) {
+        currentAlcoholType = 'Pezsgő';
+      }else if (currentAlcoholDegree === 17) {
+        currentAlcoholType = 'Likőr';
+      }else if (currentAlcoholDegree === 21 ) {
+        currentAlcoholType = 'Fehér rum';
+      }else if (currentAlcoholDegree === 35 ) {
+        currentAlcoholType = 'Unicum';
+      }else if (currentAlcoholDegree === 37.5 ) {
+        currentAlcoholType = 'Whiskey';
+      }else if (currentAlcoholDegree === 37.6 ) {
+        currentAlcoholType = 'Fütyülős Műpálinka';
+      }else if (currentAlcoholDegree === 38 ) {
+        currentAlcoholType = 'Vodka';
+      }else if (currentAlcoholDegree === 45 ) {
+        currentAlcoholType = 'Tequila';
+      }else if (currentAlcoholDegree === 47.3 ) {
+        currentAlcoholType = 'Gin';
+      }else if (currentAlcoholDegree === 60 ) {
+        currentAlcoholType = 'Matróy rum';
+      }else if (currentAlcoholDegree === 60.1 ) {
+        currentAlcoholType = 'Gyengébb Pálinka';
+      }else if (currentAlcoholDegree === 60.2 ) {
+        currentAlcoholType = 'Abszint Light';
+      }else if (currentAlcoholDegree === 80 ) {
+        currentAlcoholType = 'Erős Pálinka';
+      }else if (currentAlcoholDegree === 81 ) {
+        currentAlcoholType = 'Spicc Rum';
+      }else if (currentAlcoholDegree === 82 ) {
+        currentAlcoholType = 'Abszint';
+      };
+      alcohol.name = currentAlcoholType;
+      alcohol.degree = currentAlcoholDegree;
+      alcohol.capacity = currentAlcoholCapacity;
+      alcohols.push(alcohol);
+    }
+    toPost = {players,alcohols};
+    console.log(toPost);
+    return toPost;
+    });
 
   return {
     addPlayer: plusPlayer,
     addAlcohol: plusAlcohol,
+    post: toPost,
   };
 }());
 
-// var dummyRequests = (function () {
-//
-//   var initPost = {
-// 	"players": ["szur", "ct"],
-// 	"liquids": [{
-// 		"name": "kertsszaggat",
-// 		"degree": 50,
-// 		"capacity": 1
-// 	}, {
-// 		"name": "lanypia",
-// 		"degree": 10,
-// 		"capacity": 7
-// 	}, {
-// 		"name": "aaracske",
-// 		"degree": 4,
-// 		"capacity": 2
-// 	}]
-// }
-//
-//   var actionPost = {
-//     taskID: '3',
-//     status: 'done',
-//   },
-//
-//   return {
-//     initPost: initPost,
-//     actionPost: actionPost
-//   };
-// })();
+var ajax = (function () {
+  var xhr = new XMLHttpRequest();
+  var url = 'https://alike-libra.gomix.me';
 
-
-var xhr = new XMLHttpRequest();
-var url = 'https://alike-libra.gomix.me';
-
-var postData = function () {
-  xhr.open('POST', url + '/start');
-  xhr.setRequestHeader('Content-Type','application/json');
-  xhr.send(JSON.stringify({
-	"players": ["szur", "ct"],
-	"liquids": [{
-		"name": "kertsszaggat",
-		"degree": 50,
-		"capacity": 1
-	}, {
-		"name": "lanypia",
-		"degree": 10,
-		"capacity": 7
-	}, {
-		"name": "aaracske",
-		"degree": 4,
-		"capacity": 2
-	}]
-}))
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      console.log();(xhr.response);
+  var postData = function (data) {
+    xhr.open('POST', url + '/start');
+    xhr.setRequestHeader('Content-Type','application/json');
+    console.log(inputHandler.post);
+    xhr.send(JSON.stringify(data));
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        console.log(xhr.response);
+      };
     };
   };
-};
-
-// postData();
-// console.log(JSON.stringify({
-// "players": ["szur", "ct"],
-// "liquids": [{
-//   "name": "kertsszaggat",
-//   "degree": 50,
-//   "capacity": 1
-// }, {
-//   "name": "lanypia",
-//   "degree": 10,
-//   "capacity": 7
-// }, {
-//   "name": "aaracske",
-//   "degree": 4,
-//   "capacity": 2
-// }]
-// }))
+  return {
+    post: postData,
+  };
+}());
+ajax.post(inputHandler.post);
