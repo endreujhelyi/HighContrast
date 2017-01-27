@@ -270,7 +270,7 @@ button:active {
   margin-bottom: 2rem;
 }
 
-.mission_note:hover {
+.mission_active {
   transform: translateX(0);
 }
 
