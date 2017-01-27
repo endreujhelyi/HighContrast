@@ -4,56 +4,67 @@
   <meta charset="utf-8">
   <title>drinkitAPP</title>
 
-  <link href="reset.css" type="text/css" rel="stylesheet">
-  <link href="registration.css" type="type/css" rel="stylesheet" >
-  <link href="style.css" type="text/css" rel="stylesheet">
+  <link href="css/reset.css" type="text/css" rel="stylesheet">
+  <link href="css/registration.css" type="text/css" rel="stylesheet">
+  <link href="css/style.css" type="text/css" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-  <div class="registration hidden">
-    <div class="players">
-      <button id="add_player" type="button" name="add_player">Adj hozzá játékost</button>
-      <label for="player_name">Írd be a következő játékos nevét:</label>
-      <div class="handle_player">
-        <input class="playerInput" type="text" name="player_name" value="" placeholder="NAME">
-        <button class="delete_player" type="button" name="button">Delete</button>
+
+  <div class="reg-cover">
+    <div class="registration">
+      <div class="players">
+        <button id="add_player" class="shadow" type="button" name="add_player">Add New Player</button>
+
+        <div class="handle_player">
+          <input class="playerInput" type="text" name="player_name" value="" placeholder="NAME">
+          <button class="delete_player shadow" type="button" name="button">Delete</button>
+        </div>
+
       </div>
-    </div>
-    <div class="alcohol_stock">
-      <button id="add_alcohol_type" type="button" name="button">Adj hozzá még egy fajta alkoholt</button>
-      <div class="alcohol_inputs">
-        <select class="alcohol_selector" name="">
-          <option value="">Válassz egy alkohol típust</option>
-          <option value="4">Sör 4%</option>
-          <option value="7">Fröccs 7%</option>
-          <option value="9">Erős sör 9%</option>
-          <option value="13">Bor 13%</option>
-          <option value="13">Pezsgő 13%</option>
-          <option value="17">Likőr 17%</option>
-          <option value="21">Feher rum 21%</option>
-          <option value="35">Unicum 35%</option>
-          <option value="37.5">Whiskey 37.5%</option>
-          <option value="37.5">Fütyülős Műpálinka 37.5%</option>
-          <option value="38">Vodka 38%</option>
-          <option value="45">Tequila 45%</option>
-          <option value="47.3">Gin 47.3%</option>
-          <option value="60">Matróz rum 60%</option>
-          <option value="60">Gyengébb Pálinka 60%</option>
-          <option value="60">Abszint Light 60%</option>
-          <option value="80">Erős Pálinka 80%</option>
-          <option value="80">Spicc Rum 80%</option>
-          <option value="80">Abszint 80%</option>
-        </select>
-        <input class="liter_num" type="number" name="" value="" placeholder="Hány liter?" />
-        <button class="delete" type="button" name="button">Del</button>
+
+
+      <div class="alcohol_stock">
+        <button id="add_alcohol_type" type="button" name="button">New Drink</button>
+
+        <div class="alcohol_inputs">
+          <select class="alcohol_selector" name="">
+            <option value="">Válassz egy alkohol típust</option>
+            <option value="4">Sör 4%</option>
+            <option value="7">Fröccs 7%</option>
+            <option value="9">Erős sör 9%</option>
+            <option value="13">Bor 13%</option>
+            <option value="13">Pezsgő 13%</option>
+            <option value="17">Likőr 17%</option>
+            <option value="21">Feher rum 21%</option>
+            <option value="35">Unicum 35%</option>
+            <option value="37.5">Whiskey 37.5%</option>
+            <option value="37.5">Fütyülős Műpálinka 37.5%</option>
+            <option value="38">Vodka 38%</option>
+            <option value="45">Tequila 45%</option>
+            <option value="47.3">Gin 47.3%</option>
+            <option value="60">Matróz rum 60%</option>
+            <option value="60">Gyengébb Pálinka 60%</option>
+            <option value="60">Abszint Light 60%</option>
+            <option value="80">Erős Pálinka 80%</option>
+            <option value="80">Spicc Rum 80%</option>
+            <option value="80">Abszint 80%</option>
+          </select>
+          <input class="liter_num" type="number" name="" value="" placeholder="Hány liter?" />
+          <button class="delete" type="button" name="button">Del</button>
+        </div>
+
       </div>
+
     </div>
   </div>
 
+  <!-- arnold reg end -->
+
+
 
   <div class="container">
-
     <header>
       <div class="fake-header">
       </div>
